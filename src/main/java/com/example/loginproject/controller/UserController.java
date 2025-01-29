@@ -15,16 +15,19 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
-        return userService.register(user);
+        String response = userService.register(user);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
-        return userService.login(user);
+        String response = userService.loginUser(user.getUsername(), user.getPassword());
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(@RequestBody User user) {
-        return userService.logout(user);
+        String response = userService.logoutUser(user.getUsername());
+        return ResponseEntity.ok(response);
     }
 }

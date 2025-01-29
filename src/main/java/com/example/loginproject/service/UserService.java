@@ -13,13 +13,9 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public String registerUser(String username, String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setSessionFlag(false);
+    public String register(User user) {
         userRepository.save(user);
-        return "User registered successfully.";
+        return "User registered successfully";
     }
 
     public String loginUser(String username, String password) {
